@@ -11,6 +11,7 @@ class Utils(commands.Cog):
 
     @commands.command(pass_context=True)
     async def latency(self, ctx):
+        """Shows the latencies for all of ScreamingBot's shards."""
         em = discord.Embed(title="Shard latencies", description="Latencies of all of the working shards.",
                            color=randint(0, 0xFFFFFF))
         for i in self.bot.latencies:

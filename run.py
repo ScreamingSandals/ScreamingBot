@@ -3,14 +3,17 @@ import discord
 import asyncio
 from os import environ
 from dotenv import load_dotenv
+from libs.helpcommand import ScreamingHelpCommand
+import datetime
 
 load_dotenv()
 token = environ.get("DISCORD_TOKEN")
 
 intents = discord.Intents.default()
-intents.members = True
+# intents.members = True
 
 bot = commands.AutoShardedBot(command_prefix="?", intents=intents)
+bot.help_command = ScreamingHelpCommand()
 
 @bot.event
 async def on_ready():
