@@ -59,5 +59,25 @@ class Help(commands.Cog):
 		em.set_footer(text="ScreamingBot")
 		await ctx.send(embed=em)
 
+	@commands.command(pass_context=True)
+	async def java11(self, ctx):
+		"""Info about upgrading to Java 11."""
+		em = discord.Embed(title="Java 11", description="Here's instructions on how to upgrade to Java 11.")
+		em.add_field(name="Docs", value="See our [docs](https://docs.screamingsandals.org) for instructions.")
+		em.add_field(name="AdoptOpenJDK download", value="Download AdoptOpenJDK [here](https://adoptopenjdk.net/).")
+		em.timestamp = datetime.datetime.now(tz=datetime.timezone.utc)
+		em.set_footer(text="ScreamingBot")
+		await ctx.send(embed=em)
+
+	@commands.command(pass_context=True, aliases=["1.8", "1.8.x", "fuckoldversions", "fuck1.8"])
+	async def versions(self, ctx):
+		"""Info on versions that SBW and SBA support."""
+		em = discord.Embed(title="Versions")
+		em.add_field(name="Versions", value="SBW and SBA support versions ranging from 1.9.4 to the latest.", inline=False)
+		em.add_field(name="1.8.x", value="We won't support 1.8.x **ever**, because it makes our work harder.\nWe strongly recommend to use the latest version of Minecraft along with [OldCombatMechanics](https://www.spigotmc.org/resources/oldcombatmechanics-disable-1-9-hit-cooldown.19510/) if you want the 1.8.x combat.", inline=False)
+		em.timestamp = datetime.datetime.now(tz=datetime.timezone.utc)
+		em.set_footer(text="ScreamingBot")
+		await ctx.send(embed=em)
+
 def setup(bot):
 	bot.add_cog(Help(bot))

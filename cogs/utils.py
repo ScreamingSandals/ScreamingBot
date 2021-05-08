@@ -20,6 +20,15 @@ class Utils(commands.Cog):
         em.timestamp = datetime.datetime.now(tz=datetime.timezone.utc)
         await ctx.send(embed=em)
 
+    @commands.command(pass_context=True, hidden=True)
+    @commands.has_permissions(kick_members=True)
+    @commands.guild_only()
+    async def changepresence(self, ctx, *, presence: str):
+        """Changing the presence of the bot."""
+        game = discord.Game(presence)
+        await self.bot.change_presence(status=discord.Status.idle, activity=game)
+        await ctx.send(":white_check_mark: Changed!")
+
 
 def setup(bot):
     bot.add_cog(Utils(bot))

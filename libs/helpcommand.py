@@ -9,7 +9,8 @@ class ScreamingHelpCommand(commands.HelpCommand):
         e = discord.Embed(title="Help", color=discord.Color.blurple(), description="Help for all of ScreamingBot's commands.")
         for i in mapping.values():
             for cmd in i:
-                e.add_field(name=cmd.name, value=str(cmd.help), inline=False)  # change inline to True if you want it to be a grid
+                if not cmd.hidden:
+                    e.add_field(name=cmd.name, value=str(cmd.help), inline=False)  # change inline to True if you want it to be a grid
         e.set_footer(text="ScreamingBot")
         e.timestamp = datetime.datetime.now(tz=datetime.timezone.utc)
         await destination.send(embed=e)
