@@ -79,5 +79,37 @@ class Help(commands.Cog):
 		em.set_footer(text="ScreamingBot")
 		await ctx.send(embed=em)
 
+	@commands.command(pass_context=True)
+	async def repo(self, ctx):
+		"""A link for the ScreamingSandals repository."""
+		em = discord.Embed(title="ScreamingSandals repo", url="https://repo.screamingsandals.org")
+		em.timestamp = datetime.datetime.now(tz=datetime.timezone.utc)
+		em.set_footer(text="ScreamingBot")
+		await ctx.send(embed=em)
+
+	@commands.command(pass_context=True, aliases=["papi", "placeholderapi"])
+	async def placeholders(self, ctx):
+		"""A link for SBW PlaceholderAPI placeholders."""
+		em = discord.Embed(title="Placeholders for ScreamingBedWars", url="https://github.com/ScreamingSandals/BedWars/wiki/PlaceholderAPI-placeholders")
+		em.timestamp = datetime.datetime.now(tz=datetime.timezone.utc)
+		em.set_footer(text="ScreamingBot")
+		await ctx.send(embed=em)
+
+	@commands.command(pass_context=True, aliases=["javadoc", "jd"])
+	async def javadocs(self, ctx):
+		"""A link for the SBW Javadocs."""
+		em = discord.Embed(title="ScreamingBedWars Javadocs", url="https://jd.screamingsandals.org")
+		em.timestamp = datetime.datetime.now(tz=datetime.timezone.utc)
+		em.set_footer(text="ScreamingBot")
+		await ctx.send(embed=em)
+
+	@commands.command(pass_context=True, aliases=["bwprefix"])
+	async def sbwprefix(self, ctx):
+		"""Info about changing the chat prefix of SBW."""
+		em = discord.Embed(title="Prefix", description="You can change prefix per game via\n`/bw admin <arena> customprefix &6My Awesome Prefix`\n\nOr you can change it by modifying the language files.")
+		em.timestamp = datetime.datetime.now(tz=datetime.timezone.utc)
+		em.set_footer(text="ScreamingBot")
+		await ctx.send(embed=em)
+
 def setup(bot):
 	bot.add_cog(Help(bot))
