@@ -15,11 +15,13 @@ intents = discord.Intents.default()
 bot = commands.AutoShardedBot(command_prefix="?", intents=intents)
 bot.help_command = ScreamingHelpCommand()
 
+
 @bot.event
 async def on_ready():
-	bot.load_extension("cogs.utils")
-	bot.load_extension("cogs.help")
-	print("Bot loaded!")
+    bot.load_extension("cogs.utils")
+    bot.load_extension("cogs.help")
+    print("Bot loaded!")
+
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -29,5 +31,6 @@ async def on_command_error(ctx, error):
     e.timestamp = datetime.datetime.now(tz=datetime.timezone.utc)
     e.set_footer(text="ScreamingBot")
     await ctx.send(embed=e)
+
 
 bot.run(token)
