@@ -1,0 +1,35 @@
+plugins {
+	id 'org.springframework.boot' version "${SPRING_FRAMEWORK_VERSION}"
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'org.screamingsandals'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '16'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url 'https://repo.spring.io/milestone'
+	}
+}
+
+dependencies {
+	implementation "org.springframework.boot:spring-boot-starter:${SPRING_FRAMEWORK_VERSION}"
+	compileOnly "org.projectlombok:lombok:${LOMBOK_VERSION}"
+	annotationProcessor "org.projectlombok:lombok:${LOMBOK_VERSION}"
+	testImplementation "org.springframework.boot:spring-boot-starter-test:${SPRING_FRAMEWORK_VERSION}"
+
+	implementation "com.discord4j:discord4j-core:${DISCORD4J_VERSION}"
+}
+
+test {
+	useJUnitPlatform()
+}
